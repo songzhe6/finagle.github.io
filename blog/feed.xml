@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Finagle blog</title>
+  <id>https://finagle.github.io/blog</id>
+  <link href="https://finagle.github.io/blog"/>
+  <link href="https://finagle.github.io/blog/blog/feed.xml" rel="self"/>
+  <updated>2022-04-20T00:00:00Z</updated>
+  <author>
+    <name>Blog Author</name>
+  </author>
+  <entry>
+    <title>April 2022 Release Notes - Version 22.4.0</title>
+    <link rel="alternate" href="https://finagle.github.io/blog/2022/04/20/release-notes/"/>
+    <id>https://finagle.github.io/blog/2022/04/20/release-notes/</id>
+    <published>2022-04-20T00:00:00Z</published>
+    <updated>2022-04-20T23:37:14+00:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Spring is finally here 😎. Enjoy the lovely weather with our April release 🎉.&lt;/p&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/finagle/"&gt;Finagle&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;Bug Fixes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  finagle-integration: we discovered that we had a dead code in MuxClientSession.
+Let&amp;rsquo;s remove Timer as a parameter in MuxClientSession since it&amp;rsquo;s a dead code.
+&lt;a href="https://github.com/twitter/finagle/commit/77396f8498b3513a927ad8c30637d3afe0d230e6"&gt;77396f84&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/util/"&gt;Util&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;Breaking API Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  util-stats: The metric instantiation methods have been removed from MetricBuilder. Use the methods on
+StatsReceiver to instantiate metrics instead. &lt;a href="https://github.com/twitter/util/commit/3685d7251f0fc43a6f5746ee6e562c5c91ed34a3"&gt;3685d725&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/finatra/"&gt;Finatra&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;No Changes&lt;/h2&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/scrooge/"&gt;Scrooge&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;No Changes&lt;/h2&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/twitter-server/"&gt;Twitter Server&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;No Changes&lt;/h2&gt;
+</content>
+  </entry>
+  <entry>
+    <title>March 2022 Release Notes - Version 22.3.0</title>
+    <link rel="alternate" href="https://finagle.github.io/blog/2022/03/29/release-notes/"/>
+    <id>https://finagle.github.io/blog/2022/03/29/release-notes/</id>
+    <published>2022-03-29T00:00:00Z</published>
+    <updated>2022-04-12T18:01:01+00:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;March is here ☀️, and Spring isn’t far behind 🌱. Enjoy this wonderful time of year with our March release 🥂.&lt;/p&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/util/"&gt;Util&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;Deprecations&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  util-stats: Deprecated methods on MetricBuilder for directly instantiating metrics so that we can
+eventually remove the statsReceiever field from MetricBuilder and let it just be the source of
+truth for defining a metric. &lt;a href="https://github.com/twitter/util/commit/a7958355a4eb6f54229f56fc84bb1fa9546abcd3"&gt;a7958355&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/scrooge/"&gt;Scrooge&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  scrooge-generator: for each method defined in a service in the Thrift IDL, if any request arg
+of a method has annotations started with validation., in Java template, generate a new trait
+&lt;code&gt;ServerValidationMixin&lt;/code&gt; with a new API &lt;code&gt;violationReturning&amp;lt;method_name&amp;gt;&lt;/code&gt;; which validates incoming
+request (of Struct, Union, Exception types) and return any violations (as method parameters
+&lt;code&gt;&amp;lt;request_variable&amp;gt;Violations&lt;/code&gt;) back to the users in the method API. &lt;a href="https://github.com/twitter/scrooge/commit/aab914658a44472b58ff8189374ecc1b0cecac10"&gt;aab91465&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Breaking API Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  scrooge: ThriftUnion is now defined to extend ThriftStruct. In practice,
+this is not a significant change as all Scrooge-generated classes that
+implement ThriftUnion also implement ThriftStruct. We just made the
+invariant that unions are always structs explicit in the type system.
+&lt;a href="https://github.com/twitter/scrooge/commit/5c00d735e7f2c240103d9221b0474a4034ed2ec3"&gt;34ed2ec3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Runtime Behavior Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  scrooge: Bump version of Jackson to 2.13.2. &lt;a href="https://github.com/twitter/scrooge/commit/b283d341501bd44fd6701672c51284bae73a7a22"&gt;b283d341&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/finagle/"&gt;Finagle&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;Breaking API Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  finagle-core: Removed the stack param &lt;code&gt;WhenNoNodesOpenParam&lt;/code&gt; from LoadBalancerFactory.
+Removed NoNodesOpenServiceFactory and NoNodesOpenException. When the majority of nodes
+are busy or closed (approx 60%), the load balancer will probabilistically fail open and
+pick a node at random. &lt;a href="https://github.com/twitter/finagle/commit/c9c21bfea8035030329482c2888a3df11ec9ffa4"&gt;1ec9ffa4&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Runtime Behavior Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  finagle: Bump version of Jackson to 2.13.2. &lt;a href="https://github.com/twitter/finagle/commit/96459e3bebbde122db997a4503cb89980f83179d"&gt;0f83179d&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/twitter-server/"&gt;Twitter Server&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;Updates&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  Update the twitter-server/slf4j-jdk14 Logging trait to ensure it defines a Logger to
+handle the cases where a class the trait is mixed into has redefined the logger. &lt;a href="https://github.com/twitter/twitter-server/commit/b2ea17099b2d40239012c169dab7cc828453d4d7"&gt;b2ea1709&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Runtime Behavior Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  Bump version of Jackson to 2.13.2. &lt;a href="https://github.com/twitter/twitter-server/commit/3bb02e4327c407e1ecf9f6f136038d83809941ae"&gt;3bb02e43&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/finatra/"&gt;Finatra&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;Runtime Behavior Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  inject-app: Remove the SLF4J-API logging bridges as dependencies. These were originally
+added as the framework was expressly opionated that users should use Logback as an SLF4J-API
+implementation, however specifying the bridges on the Finatra inject/inject-app library
+causes many issues with code that must use a different SLF4J-API logging implementation
+but still uses the Finatra framework. Users should note that if they do not include these
+bridges in some other manner that they may lose logging if they have any libraries which
+log with one of the formerly bridged implementations. Also note that servers using a
+TwitterServer logging implementation to support &lt;a href="https://twitter.github.io/twitter-server/Features.html#dynamically-change-log-levels"&gt;dynamically changing log levels&lt;/a&gt; will get the proper bridges as dependencies.
+&lt;a href="https://github.com/twitter/finatra/commit/a73a29576c7010a9f653b572a9e650f6f0bd6721"&gt;a73a2957&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Runtime Behavior Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  inject-server: Throw an UnsupportedOperationException when access to the c.t.inject.server.DeprecatedLogging#log
+instance is attempted. This is a JUL Logger instance which was provided only as a backward-compatible
+shim for Finatra services when the c.t.server.TwitterServer framework was moved to the SLF4J-API.
+The instance was marked @deprecated in hopes of alerting users to not use it. We have now updated
+it to throw an exception when accessed. Please refer to the Finatra documentation for more information
+on using the SLF4J-API for logging with the Finatra framework: &lt;a href="https://twitter.github.io/finatra/user-guide/logging/index.html"&gt;https://twitter.github.io/finatra/user-guide/logging/index.html&lt;/a&gt;.
+&lt;a href="https://github.com/twitter/finatra/commit/e2f267525f3526b79357aa028c9b63aa67ee63a1"&gt;e2f26752&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Added&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  inject-app: Introduce test-friendly c.t.inject.app.console.ConsoleWriter and
+c.t.inject.app.TestConsoleWriter, which can be used to inspect the output of a command-line
+style c.t.inject.app.App. &lt;a href="https://github.com/twitter/finatra/commit/404f7eeb769074d42e258f62d7db5957195cbf60"&gt;404f7eeb&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Changed&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  inject-modules: Remove deprecated c.t.inject.modules.LoggerModule. &lt;a href="https://github.com/twitter/finatra/commit/4fa62a88032f48e6aa5beb8eee348edd637a555d"&gt;4fa62a88&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  finatra: Bump version of Jackson to 2.13.2 &lt;a href="https://github.com/twitter/finatra/commit/3e0bd9991dcaac629dd7e53debe54c18eb081c63"&gt;3e0bd999&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  inject-thrift-client: Deprecate c.t.inject.thrift.AndThenService, c.t.inject.thrift.modules.AndThenServiceModule,
+and c.t.inject.thrift.internal.DefaultAndThenServiceImpl. These were plumbing for unreleased
+experimental record/replay functionality and currently do nothing with no plan for implementation.
+&lt;a href="https://github.com/twitter/finatra/commit/887c2ffb5bfa237dd41658c2646199961c47c547"&gt;887c2ffb&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>February 2022 Release Notes - Version 22.2.0</title>
+    <link rel="alternate" href="https://finagle.github.io/blog/2022/03/04/release-notes/"/>
+    <id>https://finagle.github.io/blog/2022/03/04/release-notes/</id>
+    <published>2022-03-04T00:00:00Z</published>
+    <updated>2022-04-12T18:01:01+00:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;One of the joys of winter is drinking a mug of hot cocoa, curling up in a nook, and warming yourself by the heat of your computer compiling Scala code ☕🖥️🔥&lt;/p&gt;
+
+&lt;p&gt;We have a new release, and no houses were burned down in electrical fires while getting it to you.&lt;/p&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/util/"&gt;Util&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  util-core: Added Memoize.classValue as a Scala-friendly API for java.lang.ClassValue. &lt;a href="https://github.com/twitter/util/commit/b696fdfd9082fc7dfb3468f7aea84ce24677ef82"&gt;b696fdfd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  util-jvm: Register JVM expression including memory pool usages (including code cache, compressed class space,
+eden space, sheap, metaspace, survivor space, and old gen) and open file descriptors count in StatsReceiver.
+&lt;a href="https://github.com/twitter/util/commit/ad617fe92445371dc5647add7a7143450492c137"&gt;ad617fe9&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  util-slf4j-jul-bridge: Add Slf4jBridge trait which can be mixed into extensions of c.t.app.App in
+order to attempt installation of the SLF4JBridgeHandler via the Slf4jBridgeUtility in the constructor
+of the c.t.app.App instance. &lt;a href="https://github.com/twitter/util/commit/ab73d64f95ceea48899e7561429d781ad8da5929"&gt;ab73d64f&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Runtime Behavior Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  util-slf4j-api: Update the Logger API to include &amp;ldquo;call-by-name&amp;rdquo; method
+variations akin to the Logging trait. When creating a Logger from a
+Scala singleton object class, the resultant logger name will no longer include
+the \$ suffix. Remove the deprecated Loggers object which is no longer
+needed for Java compatibility as users can now directly use the Logger
+apply functions with no additional ceremony. &lt;a href="https://github.com/twitter/util/commit/cd99f16542959d926d43a5f5b498c2627038664b"&gt;cd99f165&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  util: Bump version of Caffeine to 2.9.3. &lt;a href="https://github.com/twitter/util/commit/07b5c2ef2f7843cc1c8e3cf7b017a98ee1f0d0bc"&gt;07b5c2ef&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Breaking API Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  util-core: The c.t.util.Responder trait has been removed. &lt;a href="https://github.com/twitter/util/commit/88d3c95a30888d26f1c9bf8f6bf3b2d7f5e80ec2"&gt;88d3c95a&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/scrooge/"&gt;Scrooge&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  scrooge-core: c.t.scrooge.ThriftStructCodec.forStructClassTag API for retrieving
+the codec for a struct or union class given a class tag or manifest and
+c.t.scrooge.ThriftStructMetadata.forStructClassTag for retrieving its metadata.
+&lt;a href="https://github.com/twitter/scrooge/commit/ba1a97bc9549416b1d34e7c1550c38386bdaab42"&gt;ba1a97bc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  scrooge-core: c.t.scrooge.ThriftStructCodec.forStructClass API for retrieving codec
+for a struct or union class and c.t.scrooge.ThriftStructMetadata.forStructClass for
+similarly retrieving its metadata. &lt;code&gt;PHAB_ID=_D825675&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;  scrooge-generator: for each method defined in a service in the Thrift IDL, if any request arg
+of a method has annotations started with validation., generate a new trait
+ServerValidationMixin with a new API violationReturning&amp;lt;method_name&amp;gt; which validates incoming
+request (of Struct, Union, Exception types) and return any violations (as method parameters
+&amp;lt;request_variable&amp;gt;Violations) back to the users in the method API. &lt;a href="https://github.com/twitter/scrooge/commit/aa83a3f5886cae3d4ef96f379192d906daaab7a7"&gt;aa83a3f5&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Breaking API Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  scrooge-generator: the c.t.scrooge.frontend.ThriftParser now always throws exceptions
+rather than warnings when a fieldname matches a reserved keyword. See
+c.t.scrooge.frontend.ThriftKeywords for the full list of disallowed
+keywords. &lt;a href="https://github.com/twitter/scrooge/commit/33767856287a8fadcf3838478889909cf0c08bfb"&gt;33767856&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/finagle/"&gt;Finagle&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;New Features&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  finagle-logging: Introduced finagle-logging, a new module for SLF4J-integrated
+filters. &lt;a href="https://github.com/twitter/finagle/commit/0e6a3b681f3a6988728d518dbd355b193164bfd3"&gt;0e6a3b68&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  finagle-logging: Introduced SlowTracesFilter, which observes your requests and
+logs the slowest ones that are also sampled for tracing. &lt;a href="https://github.com/twitter/finagle/commit/0e6a3b681f3a6988728d518dbd355b193164bfd3"&gt;0e6a3b68&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  finagle-core: Introduced MinSendBackupAfterMs to the stack param Configured in
+BackupRequestFilter and propagated changes to MethodBuilder by adding new versions of idempotent
+function. When traffic load is low, this is useful to increase the delay when backup requests are
+sent and prevent the client from sending unnecessary backup requests. &lt;a href="https://github.com/twitter/finagle/commit/b0b8a6bb321f8ec528457bd7da43ad705216d178"&gt;b0b8a6bb&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  finagle-core: Added a new annotation clnt/has_dark_request in tracing and Finagle
+Local context. The new annotation can be used to indicate whether or not the request
+has a span that is sent to dark service. &lt;a href="https://github.com/twitter/finagle/commit/dab1e48d03336a50820c1c7419d1683f9b67f004"&gt;dab1e48d&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug Fixes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  finagle-netty4-http: On a Request, adding multiple cookies with the same name
+to a CookieMap preserves all of them. Only cookies on Responses are
+deduplicated. Previously, adding a Request cookie with the same name would
+overwrite the old value with the new value. &lt;a href="https://github.com/twitter/finagle/commit/6a49bfda74f433fa2b9cc2dca71c350e10cb6bc9"&gt;6a49bfda&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  finagle-postgres: Fixed a bug where a single framer instance was shared across all
+connections to a host when using TLS. &lt;a href="https://github.com/twitter/finagle/commit/185e21158aaea876f82d5878e1d701bd0dc497c0"&gt;185e2115&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Breaking API Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  finagle-core: Changed the shouldInvoke parameter in method serviceConcurrently
+and sendDarkRequest in AbstractDarkRequestFilter to be a Boolean instead of a
+function of (Req =&amp;gt; Boolean). &lt;a href="https://github.com/twitter/finagle/commit/dab1e48d03336a50820c1c7419d1683f9b67f004"&gt;dab1e48d&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  finagle-core: Renamed the existing clnt/dark_request to clnt/is_dark_request in
+c.t.finagle.filter.DarkTrafficFilter&lt;a href="https://github.com/twitter/finagle/commit/dab1e48d03336a50820c1c7419d1683f9b67f004"&gt;dab1e48d&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Runtime Behavior Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  finagle: Bump version of Caffeine to 2.9.3. &lt;a href="https://github.com/twitter/finagle/commit/c42cea2c7b7c3bfaede6724fc3466d315952e89f"&gt;c42cea2c&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  finagle: Upgrade to Netty 4.1.73.Final and netty-tcnative 2.0.46.Final.&lt;a href="https://github.com/twitter/finagle/commit/cccbae40f6139eb15009d5dfc1f4c47ddba15862"&gt;cccbae40&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  finagle-core: in TimeoutFilter, only transform a timeout exception caused by TimeoutFilter. This also
+changes the type of exception raised by the TimeoutFilter from a java.util.concurrent.TimeoutException
+to a com.twitter.finagle.RequestTimeoutException. &lt;a href="https://github.com/twitter/finagle/commit/6a95f37d36db9f22908e571ecda342e9b62290fc"&gt;6a95f37d&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  finagle-mux: Exceptions raised when Mux negotiation has failed have been
+moved to a Debug log level as the stack trace is generally long and not
+necessarily helpful. The logged message now includes the remote address and
+that is logged at both the Debug level (with the exception and stack trace)
+and Warning level (without). &lt;a href="https://github.com/twitter/finagle/commit/712878ef392c2304fc371d4c439546702f1c18cd"&gt;712878ef&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  finagle-core: c.t.f.ssl.SslConfigurations.initializeSslContext now creates an engine which includes TLSv1.3 as a supported protocol. &lt;a href="https://github.com/twitter/finagle/commit/cc6c9db8afb615600950a201043c8b89eb4833eb"&gt;cc6c9db8&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  finagle-netty4: c.t.f.n.ssl.client.Netty4ClientSslConfigurations.createClientContext and c.t.f.n.ssl.server.Netty4ServerSslConfigurations.createServerCont
+ext now create contexts using the provided cipher suites. &lt;a href="https://github.com/twitter/finagle/commit/9c6898efbc885629b0a6b073c9ab39910473ccf8"&gt;9c6898ef&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/twitter-server/"&gt;Twitter Server&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;No Changes&lt;/p&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/finatra/"&gt;Finatra&lt;/a&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;inject-modules: Deprecate c.t.inject.modules.LoggerModule. Update c.t.inject.app.App to
+mix in the util/util-slf4j-jul-bridge Slf4jBridge trait. The LoggerModule does
+not provide a solution inline with the best practices for bridging JUL to the SLF4J-API
+and users are encouraged to instead mix in the c.t.util.logging.Slf4jBridge into the
+main class of their application if necessary. The updates to c.t.inject.app.App will now
+properly bridge JUL to the SLF4J-API early in the constructor of the application catching any
+log messages emitted to JUL before where the bridging would have been attempted when using
+the LoggerModule.&lt;/p&gt;
+
+&lt;p&gt;Note that Slf4jBridge trait is already mixed into the c.t.server.TwitterServer trait and
+thus no further action is necessary forbridging JUL to the SLF4J-API in extensions of
+c.t.server.TwitterServer. &lt;a href="https://github.com/twitter/finatra/commit/83360745f91ee5dace446c99378c64c76dc0b6b9"&gt;83360745&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;inject-slf4j: Deprecate c.t.inject.logging.Logging trait and methods. Users are encouraged
+to use the c.t.util.logging.Logging trait directly. There are no replacements for
+c.t.inject.logging.Logging#debugFutureResult and c.t.inject.logging.Logging#time.
+&lt;a href="https://github.com/twitter/finatra/commit/084257a95dc529b6ef71a47c9bd1f44b7d26bc74"&gt;084257a9&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>2021 Fall/Winter Update 🍂❄️</title>
+    <link rel="alternate" href="https://finagle.github.io/blog/2022/02/03/fall-winter/"/>
+    <id>https://finagle.github.io/blog/2022/02/03/fall-winter/</id>
+    <published>2022-02-03T00:00:00Z</published>
+    <updated>2022-04-12T18:01:01+00:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Happy New Year, folks! 🥳 What better way to honor the year of 2022 🎇 than with some highlights from the second half of 2021. Welcome to the CSL Half-ly Review, a summary of all great CSL things from the second half of 2021🕺🏼.&lt;/p&gt;
+
+&lt;h3&gt;Finagle-Postgres&lt;/h3&gt;
+
+&lt;p&gt;Big news! Finagle-Postgres has been merged into the main Finagle repository. See the &lt;a href="https://github.com/twitter/finagle/commits/develop?after=98604c1540fa99dff00872614d58fdd3fac728ad+104&amp;amp;branch=develop"&gt;commits starting on August 5th&lt;/a&gt;. We’ve been busy testing it out and squashing bugs!&lt;/p&gt;
+
+&lt;h3&gt;Weighted-Aperture&lt;/h3&gt;
+
+&lt;p&gt;The deterministic aperture project is picking up a new trick: direct support for weights. The aperture load balancer no longer requires separate load balancers for each weight class and can naturally manage the weights as first class properties of an endpoint. This feature is not yet the Finagle default but will be in early 2022.&lt;/p&gt;
+
+&lt;h3&gt;Metrics Metadata&lt;/h3&gt;
+
+&lt;p&gt;Work continues to refine and mature the metrics metadata. Notably, we have developed Metric Expressions, an API that helps build composable, query-agnostic high level expressions. Expressions for success rate, throughput, p99 latency, deadline rejection, admission control rejection, failures, and general JVM expressions are currently instrumented and may be leveraged in your observability pipeline. Please note that this API is still experimental and under active development.&lt;/p&gt;
+
+&lt;h3&gt;Finagle-MySQL&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/twitter/finagle/commit/9a418a58e3bf3f978a53a346dcd603c993a88c1d"&gt;Support for &lt;code&gt;caching_sha2_password&lt;/code&gt; authentication&lt;/a&gt; method is now available to improve compatibility with MySQL 8.0.&lt;/p&gt;
+
+&lt;h3&gt;Finatra-MySQL&lt;/h3&gt;
+
+&lt;p&gt;Finatra-MySql client is &lt;a href="https://github.com/twitter/finatra/commit/fd108ada07ec6803a48261407bde02bcde6fdb59"&gt;now available&lt;/a&gt; for binding a finagle-mysql client and a EmbeddedMysqlServer. Feature tests can be tested against a real MySql instance. Thank you to Ian Bennett and Kostas Pagratis!&lt;/p&gt;
+
+&lt;h3&gt;Scrooge API Consolidation&lt;/h3&gt;
+
+&lt;p&gt;We &lt;a href="https://github.com/twitter/scrooge/commit/8d768ca620a33d18b89492a7a2077007cedb6e7d"&gt;simplified scrooge types&lt;/a&gt; by consolidating the multiple incompatible names into a single API, &lt;code&gt;ServiceName.MethodPerEndpoint&lt;/code&gt;. Scrooge now generates less code, resulting in faster compile times and easier development.&lt;/p&gt;
+
+&lt;h3&gt;Scala 3 and Util&lt;/h3&gt;
+
+&lt;p&gt;17 out of 31 subprojects in Util are Scala 3 compatible. Thank you to our summer interns!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;More to come in the future!&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Cheers,&lt;/p&gt;
+
+&lt;p&gt;Joy and Bryce on behalf of CSL&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>January 2022 Release Notes - Version 22.1.0</title>
+    <link rel="alternate" href="https://finagle.github.io/blog/2022/01/18/release-notes/"/>
+    <id>https://finagle.github.io/blog/2022/01/18/release-notes/</id>
+    <published>2022-01-18T00:00:00Z</published>
+    <updated>2022-04-12T18:01:01+00:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Happy New Year! Ease yourself into the new year with our January release.&lt;/p&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/util/"&gt;Util&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;Breaking API Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  util-jackson: The error message when failing to deserialize a character now correctly prints the non-character string. &lt;a href="https://github.com/twitter/util/commit/4ddeaf899564a895d92d77fe7919a46ad7c100a3"&gt;4ddeaf89&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Runtime Behavior Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  util: Bump version of Jackson to 2.13.1. &lt;a href="https://github.com/twitter/util/commit/4ddeaf899564a895d92d77fe7919a46ad7c100a3"&gt;4ddeaf89&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  util-core: Return suppressed exception information in Closable.sequence &lt;a href="https://github.com/twitter/util/commit/2211f75bf5c9384326e9d289fea4caa6ed82df38"&gt;2211f75b&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/scrooge/"&gt;Scrooge&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;No Changes&lt;/h2&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/finagle/"&gt;Finagle&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;Runtime Behavior Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  finagle: Bump version of Jackson to 2.13.1. &lt;a href="https://github.com/twitter/finagle/commit/831b25120addc828b7de83ae20dfbc7c2606125a"&gt;831b2512&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/finatra/"&gt;Finatra&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;Added&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;http-server: (BREAKING API CHANGE) Allow for customization of the building of the HTTP and HTTPS
+ListeningServer constructs. This allows users to specify any additional configuration over the
+Finagle Service[-R, +R] that is constructed by the HttpRouter. The
+c.t.finatra.http.HttpServerTrait#build method has been replaced by two more specific versions:
+#buildHttpListeningServer and #buildHttpsListeningServer which are used in postWarmup to
+create the appropriate ListeningServer given it has a defined port value.&lt;/p&gt;
+
+&lt;p&gt;We also update the EmbeddedHttpServer and EmbeddedHttpClient to allow for being able to run both
+the HTTP and HTTPS listening servers in tests. This is done by setting the httpsPortFlag to the
+value of https.port which will enable the binding of the HTTPS listening server to the ephemeral
+port in tests. &lt;a href="https://github.com/twitter/finatra/commit/13a600ff81fad6c0e0a68723a87dcea78f0d0c4b"&gt;13a600ff&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;mysql-client: Add base client configuration in EmbeddedMysqlServer to enable for more robust
+testing setup. This would allow users to add configurations like charset.
+Added a overridable function createRichClient to MysqlClientModuleTrait to allow
+creating the mysql client in other ways like newRichClient(Finagle.Name, String).
+&lt;a href="https://github.com/twitter/finatra/commit/dc1de2154e2eab4080fffdbf2ff177fd846cc13b"&gt;dc1de215&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Changed&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  finatra: Bump version of Jackson to 2.13.1 &lt;a href="https://github.com/twitter/finatra/commit/79bd09c4f4b64c195eacf812786c874c3864ce1c"&gt;79bd09c4&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/twitter-server/"&gt;Twitter Server&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;Runtime Behavior Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  Bump version of Jackson to 2.13.1. &lt;a href="https://github.com/twitter/twitter-server/commit/da33afe983a21d7e7a9b9a3fe27ecf358ec84d03"&gt;da33afe9&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>December 2021 Release Notes - Version 21.12.0</title>
+    <link rel="alternate" href="https://finagle.github.io/blog/2021/12/17/release-notes/"/>
+    <id>https://finagle.github.io/blog/2021/12/17/release-notes/</id>
+    <published>2021-12-17T00:00:00Z</published>
+    <updated>2022-04-12T18:01:01+00:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;The year-end holiday season is upon us, so Happy New Year 🎩 🥂 and enjoy our December release! 🥳&lt;/p&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/util/"&gt;Util&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;Breaking API Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  util-core: Activity.collect* and Var.collect* are now implemented in terms of known collection
+type scala.collection.Seq versus HKT CC[X] before. This allows for certain performance
+enhancements as well as makes it more aligned with the Future.collect APIs.
+&lt;a href="https://github.com/twitter/util/commit/caf528e2ff7a7686e4f9cc7fe95553669fa064b8"&gt;caf528e2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/scrooge/"&gt;Scrooge&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;No Changes&lt;/p&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/finagle/"&gt;Finagle&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;Deprecations&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  finagle-zipkin-core: c.t.f.zipkin.core.Sampler.DefaultSampleRate is deprecated in
+favor of c.t.f.zipkin.core.DefaultSampler.sampleRate. &lt;a href="https://github.com/twitter/finagle/commit/bd04e1c9cef4822466d4f4e5339137d68877ebc1"&gt;bd04e1c9&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug Fixes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  finagle-zipkin-core: c.t.f.zipkin.core.Sampler would sample at 1/10,000
+rate when configured with a lower (but non-zero) rate. It can now sample
+at rates as low as 1/16,777,216. &lt;a href="https://github.com/twitter/finagle/commit/17cfb58044a6a3ef11211b3fba1888a588a6be96"&gt;17cfb580&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Runtime Behavior Changes&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  finagle-zipkin-scribe: c.t.f.zipkin.thrift.ZipkinTracer uses
+c.t.f.zipkin.core.DefaultSampler.sampleRate as the default sample rate instead of
+deprecated c.t.f.zipkin.core.Sampler.DefaultSampleRate. This allows it to correctly
+observe user-configured overrides to the default sample rate. When a ZipkinTracer is
+constructed with default parameters and there are no user-configured overrides, the
+behavior is unchanged. &lt;a href="https://github.com/twitter/finagle/commit/bd04e1c9cef4822466d4f4e5339137d68877ebc1"&gt;bd04e1c9&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/finatra/"&gt;Finatra&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2&gt;Changed&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  inject-core: Move runAfterAll hook from c.t.inject.IntegrationTestMixin to
+c.t.inject.TestMixin &lt;a href="https://github.com/twitter/finatra/commit/fd108ada07ec6803a48261407bde02bcde6fdb59"&gt;fd108ada&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href="https://github.com/twitter/twitter-server/"&gt;Twitter Server&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;No Changes&lt;/p&gt;
+</content>
+  </entry>
+</feed>
